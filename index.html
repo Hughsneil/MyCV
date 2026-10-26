@@ -1,0 +1,865 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Personal portfolio of Wang Jiacun, a Data Science master's student at the University of Malaya.">
+  <title>Wang Jiacun | Data Science Portfolio</title>
+
+  <style>
+    :root {
+      --navy: #17283f;
+      --navy-light: #334761;
+      --cream: #f8f7f3;
+      --white: #ffffff;
+      --gold: #b99760;
+      --muted: #687381;
+      --line: #e5e4df;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      background: var(--cream);
+      color: var(--navy);
+      font-family: "Segoe UI", Arial, sans-serif;
+      line-height: 1.7;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1120px, 88%);
+      margin: auto;
+    }
+
+    /* Navigation */
+
+    header {
+      background: rgba(248, 247, 243, 0.96);
+      border-bottom: 1px solid var(--line);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      backdrop-filter: blur(12px);
+    }
+
+    nav {
+      min-height: 80px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-weight: 700;
+      font-size: 15px;
+      letter-spacing: 1.5px;
+    }
+
+    .logo-mark {
+      background: var(--navy);
+      color: white;
+      width: 42px;
+      height: 42px;
+      display: grid;
+      place-items: center;
+      font-family: Georgia, serif;
+      font-size: 17px;
+      letter-spacing: 0;
+    }
+
+    .nav-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      transition: color 0.25s;
+    }
+
+    .nav-links a:hover {
+      color: var(--gold);
+    }
+
+    /* Hero */
+
+    .hero {
+      min-height: 670px;
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      align-items: center;
+      gap: 75px;
+      padding: 85px 0 100px;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      font-size: 12px;
+      font-weight: 700;
+      color: #93713f;
+      letter-spacing: 2.5px;
+    }
+
+    .hero h1 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(52px, 6vw, 83px);
+      line-height: 1.08;
+      letter-spacing: -2.5px;
+      font-weight: 400;
+      margin: 25px 0;
+    }
+
+    .hero h1 em {
+      color: var(--gold);
+      font-weight: 400;
+    }
+
+    .hero-description {
+      color: var(--muted);
+      font-size: 17px;
+      max-width: 510px;
+      line-height: 1.9;
+      margin-bottom: 35px;
+    }
+
+    .buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 14px;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 13px 26px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.4px;
+      border: 1px solid var(--navy);
+      transition: 0.25s;
+    }
+
+    .btn-primary {
+      color: white;
+      background: var(--navy);
+    }
+
+    .btn-primary:hover {
+      background: var(--navy-light);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline:hover {
+      background: var(--navy);
+      color: white;
+    }
+
+    /* Photo area */
+    .portrait-area {
+        position: relative;
+        width: 260px;
+        max-width: 100%;
+        margin: 0 auto;
+        padding: 0;
+    }
+
+    /* Remove the old gold frame */
+    .portrait-area::before {
+        display: none;
+    }
+
+    /* Portrait */
+    .portrait {
+        display: block;
+        width: 100%;
+        height: auto;
+        object-fit: initial;
+        filter: none;
+
+        border: 1px solid #e5e4df;
+        box-shadow: 14px 14px 0 #eae5db;
+    }
+
+    /* Caption below the photo */
+    .photo-label {
+        position: static;
+        display: block;
+
+        margin-top: 22px;
+        padding: 0;
+
+        background: transparent;
+        color: #17283f;
+
+        font-family: Georgia, serif;
+        font-size: 14px;
+        font-style: italic;
+        text-align: center;
+    }
+
+    /* Section layout */
+
+    section {
+      padding: 100px 0;
+    }
+
+    .section-heading {
+      margin-bottom: 45px;
+    }
+
+    .section-number {
+      color: #93713f;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 2px;
+    }
+
+    .section-heading h2 {
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(35px, 4vw, 48px);
+      font-weight: 400;
+      margin: 12px 0;
+      letter-spacing: -1px;
+    }
+
+    .section-line {
+      height: 2px;
+      width: 55px;
+      background: var(--gold);
+      margin-top: 18px;
+    }
+
+    /* About */
+
+    .about {
+      background: white;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.4fr;
+      gap: 75px;
+      align-items: start;
+    }
+
+    .about-quote {
+      border-left: 3px solid var(--gold);
+      padding-left: 25px;
+      font-family: Georgia, serif;
+      font-size: 25px;
+      line-height: 1.5;
+      font-style: italic;
+    }
+
+    .about-text {
+      font-size: 16px;
+      color: #536171;
+    }
+
+    /* Education */
+
+    .education-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 25px;
+    }
+
+    .education-card {
+      padding: 35px;
+      background: white;
+      border: 1px solid var(--line);
+      border-top: 3px solid var(--gold);
+    }
+
+    .card-kicker {
+      color: #93713f;
+      text-transform: uppercase;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      font-size: 11px;
+    }
+
+    .education-card h3,
+    .project-card h3 {
+      font-family: Georgia, serif;
+      font-size: 24px;
+      font-weight: 400;
+      line-height: 1.35;
+      margin: 14px 0;
+    }
+
+    .education-card p {
+      color: var(--muted);
+      margin-bottom: 0;
+    }
+
+    /* Projects */
+
+    .projects {
+      background: var(--navy);
+      color: white;
+    }
+
+    .projects .section-heading h2 {
+      color: white;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 22px;
+    }
+
+    .project-card {
+      background: #22364f;
+      padding: 34px 28px;
+      border: 1px solid #3d5068;
+      transition: transform 0.3s, border-color 0.3s;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      border-color: var(--gold);
+    }
+
+    .project-index {
+      font-family: Georgia, serif;
+      font-size: 34px;
+      color: #cfaf7d;
+    }
+
+    .project-card h3 {
+      font-size: 23px;
+      min-height: 65px;
+    }
+
+    .project-card p {
+      color: #c4ced9;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 25px;
+    }
+
+    .tag {
+      font-size: 11px;
+      border: 1px solid #66758a;
+      color: #e1e7ee;
+      padding: 5px 10px;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+    }
+
+    .skill-group {
+      padding: 28px 0;
+      border-top: 2px solid var(--navy);
+    }
+
+    .skill-group h3 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: 23px;
+    }
+
+    .skill-group p {
+      color: var(--muted);
+      line-height: 2;
+      font-size: 15px;
+    }
+
+    /* Contact */
+
+    .contact {
+      background: #eeece5;
+      text-align: center;
+    }
+
+    .contact .section-line {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact p {
+      max-width: 530px;
+      margin: 20px auto 30px;
+      color: var(--muted);
+    }
+
+    .contact h2 {
+      font-family: Georgia, serif;
+      font-weight: 400;
+      font-size: clamp(38px, 5vw, 60px);
+      line-height: 1.2;
+      margin: 20px 0;
+    }
+
+    footer {
+      background: var(--navy);
+      color: #c4ced9;
+      padding: 26px 0;
+      font-size: 12px;
+    }
+
+    .footer-inner {
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    /* Mobile responsiveness */
+
+    @media (max-width: 900px) {
+      .hero {
+        grid-template-columns: 1fr;
+        gap: 40px;
+        padding: 65px 0;
+      }
+
+      .portrait-area {
+        max-width: 440px;
+        width: 100%;
+        margin: auto;
+      }
+
+      .about-grid,
+      .education-grid {
+        grid-template-columns: 1fr;
+        gap: 28px;
+      }
+
+      .projects-grid,
+      .skills-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      nav {
+        flex-direction: column;
+        align-items: flex-start;
+        padding: 16px 0;
+        gap: 14px;
+      }
+
+      .nav-links {
+        gap: 16px;
+        font-size: 12px;
+      }
+
+      .hero h1 {
+        font-size: 53px;
+      }
+
+      .portrait {
+        height: 380px;
+      }
+
+      section {
+        padding: 65px 0;
+      }
+
+      .projects-grid,
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+
+      *,
+      *::before,
+      *::after {
+        transition: none !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <header>
+    <nav class="container">
+      <a class="logo" href="#home">
+        <span class="logo-mark">WJ</span>
+        <span>WANG JIACUN</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#about">About</a>
+        <a href="#education">Education</a>
+        <a href="#projects">Projects</a>
+        <a href="#skills">Skills</a>
+        <a href="#contact">Contact</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- Hero -->
+    <div class="container" id="home">
+      <div class="hero">
+
+        <div class="hero-content">
+          <div class="eyebrow">
+            Data Science · Machine Learning · Research
+          </div>
+
+          <h1>
+            Hello, I'm<br>
+            <em>Jiacun Wang.</em>
+          </h1>
+
+          <p class="hero-description">
+            A Master's student in Data Science at the
+            University of Malaya, with an academic
+            background in Bioinformatics.
+
+            I am passionate about applying machine
+            learning, data analytics, and explainable
+            AI to solve complex real-world problems.
+          </p>
+
+          <div class="buttons">
+            <a href="#projects" class="btn btn-primary">
+              Explore My Work ↗
+            </a>
+            <a href="#about" class="btn btn-outline">
+              More About Me
+            </a>
+          </div>
+        </div>
+
+        <div class="portrait-area">
+          <!-- My own photo -->
+          <img
+            class="portrait"
+            src="profile.jpg"
+            alt="Portrait of Wang Jiacun"
+          >
+        </div>
+
+      </div>
+    </div>
+
+    <!-- About -->
+    <section class="about" id="about">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-number">01 / INTRODUCTION</div>
+          <h2>About Me</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="about-grid">
+
+          <div class="about-quote">
+            "Exploring the intersection of
+            data, intelligence, and scientific
+            discovery."
+          </div>
+
+          <div class="about-text">
+            <p>
+              I am currently pursuing a Master of Data
+              Science at the University of Malaya in
+              Kuala Lumpur, Malaysia.
+            </p>
+
+            <p>
+              My undergraduate studies in Bioinformatics
+              at Hebei University provided me with an
+              interdisciplinary foundation in computational
+              methods and biological sciences.
+            </p>
+
+            <p>
+              My interests include machine learning,
+              predictive modeling, interpretable AI,
+              and their applications in scientific
+              research and practical decision-making.
+            </p>
+
+            <p>
+              I enjoy learning new technologies,
+              investigating challenging problems,
+              and transforming complex data into
+              meaningful insights.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Education -->
+    <section id="education">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-number">02 / ACADEMIC JOURNEY</div>
+          <h2>Education</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="education-grid">
+
+          <div class="education-card">
+            <div class="card-kicker">
+              Postgraduate Education
+            </div>
+
+            <h3>University of Malaya</h3>
+
+            <strong>Master of Data Science</strong>
+
+            <p>
+              Kuala Lumpur, Malaysia
+            </p>
+
+            <p>
+              Focus: Machine Learning,
+              Data Analytics, Data Mining,
+              and Big Data Technologies.
+            </p>
+          </div>
+
+          <div class="education-card">
+            <div class="card-kicker">
+              Undergraduate Education
+            </div>
+
+            <h3>Hebei University</h3>
+
+            <strong>Bachelor's Degree in Bioinformatics</strong>
+
+            <p>
+              Hebei, China
+            </p>
+
+            <p>
+              Interdisciplinary training
+              in biological sciences,
+              programming, statistics,
+              and computational analysis.
+            </p>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="projects" id="projects">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-number">03 / SELECTED WORK</div>
+          <h2>Research & Projects</h2>
+          <div class="section-line"></div>
+        </div>
+
+        <div class="projects-grid">
+
+          <div class="project-card">
+            <div class="project-index">01</div>
+
+            <h3>
+              Explainable Protein
+              Stability Prediction
+            </h3>
+
+            <p>
+              Ongoing research on predicting
+              protein stability changes caused
+              by single-point mutations,
+              incorporating AAindex features,
+              machine learning, and
+              Transformer-based models.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">AAindex</span>
+              <span class="tag">Transformer</span>
+              <span class="tag">Explainable AI</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-index">02</div>
+
+            <h3>
+              GenAI-Assisted Data Mining
+              & Intelligent Analytics
+            </h3>
+
+            <p>
+              Built an agentic pipeline for synthetic patient 
+              data generation and symptom extraction, utilizing 
+              quantized LLMs, vLLM, and Random Forest for text 
+              classification and imputation.
+            </p>
+
+            <div class="tags">
+              <span class="tag">Python</span>
+              <span class="tag">LLM</span>
+              <span class="tag">vLLM</span>
+              <span class="tag">Agentic AI</span>
+            </div>
+          </div>
+
+          <div class="project-card">
+            <div class="project-index">03</div>
+
+            <h3>
+              Global Business Analytics
+              & Visual Decision Support
+            </h3>
+
+            <p>
+              Developed interactive dashboards in SAS Viya and Tableau 
+              for revenue and sales trend analysis, utilizing spatial and 
+              profitability visualizations to drive market expansion and 
+              optimization.
+            </p>
+
+            <div class="tags">
+              <span class="tag">SAS Viya</span>
+              <span class="tag">Tableau</span>
+              <span class="tag">Data Visualization</span>
+              <span class="tag">Business Analytics</span>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section id="skills">
+      <div class="container">
+
+        <div class="section-heading">
+          <div class="section-number">04 / EXPERTISE</div>
+          <h2>Technical Skills</h2>
+          <div class="section-line"></div>
+        </div>    
+          <div class="skills-grid">
+
+              <div class="skill-group">
+                  <h3>Programming</h3>
+                  <p>
+                      Python<br>
+                      R<br>
+                      SQL<br>
+                      HTML & CSS<br>
+                  </p>
+              </div>
+
+              <div class="skill-group">
+                  <h3>Machine Learning</h3>
+                  <p>
+                      Scikit-learn<br>
+                      PyTorch<br>
+                      LLMs<br>
+                      Explainable AI
+                  </p>
+              </div>
+
+              <div class="skill-group">
+                  <h3>Data Analytics</h3>
+                  <p>
+                      SAS Viya<br>
+                      Tableau<br>
+                      Statistical Analysis<br>
+                      Business Intelligence
+                  </p>
+              </div>
+
+          </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact" id="contact">
+      <div class="container">
+
+        <div class="section-number">
+          05 / GET IN TOUCH
+        </div>
+
+        <h2>Let's Connect.</h2>
+        <div class="section-line"></div>
+
+        <p>
+          I welcome opportunities to exchange ideas,
+          collaborate on interesting projects,
+          and explore possibilities in data science
+          and machine learning.
+        </p>
+
+        <!-- My email -->
+        <a
+          href="mailto:25075892@siswa.um.edu.my"
+          class="btn btn-primary"
+        >
+          Contact Me ↗
+        </a>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container footer-inner">
+      <span>© <span id="year"></span> Wang Jiacun</span>
+      <span>Designed with curiosity & purpose.</span>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+
+</body>
+</html>
